@@ -1,0 +1,112 @@
+default:
+  badmintoncn:
+    url:
+      news: https://www.badmintoncn.com/list.php?tid=1
+      match: https://www.badmintoncn.com/list.php?tid=2
+      person: https://www.badmintoncn.com/list.php?tid=3
+      ranking: https://www.badmintoncn.com/list.php?tid=4
+    name: 中羽在线
+    schema:
+      name: 中羽在线
+      baseSelector: body > div.container > div.main > div.w980.center.clear.mt1 > div.left-box > div.listbox > ul > li
+      fields:
+      - name: title
+        selector: div.word_wrap > a
+        type: text
+      - name: detail_link
+        selector: div.word_wrap > a
+        type: html
+      - name: publication_date
+        selector: div:nth-child(4)
+        type: text
+      - name: content
+        selector: p
+        type: text
+  aiyuke:
+    url:
+      bagua: https://www.aiyuke.com/view/cate/qiuxingbagua.htm
+      match: https://www.aiyuke.com/view/cate/saishikuaixun.htm
+    name: 爱羽客
+    schema:
+      baseSelector: body > div:nth-child(8) > div > div.news_main > div.news_list_main > div
+      fields:
+      - name: title
+        selector: div.desc > h1
+        type: text
+      - name: detail_link
+        selector: div.desc > h1
+        type: html
+      - name: publication_date
+        selector: div.desc > p.info
+        type: text
+      - name: content
+        selector: div.desc > p.desc
+        type: text
+  ranking:
+    url:
+      men_single: https://www.badmintoncn.com/ranking.php?rw=&type=6
+      women_single: https://www.badmintoncn.com/ranking.php?rw=&type=7
+      men_double: https://www.badmintoncn.com/ranking.php?rw=&type=8
+      women_double: https://www.badmintoncn.com/ranking.php?rw=&type=9
+      mix_double: https://www.badmintoncn.com/ranking.php?rw=&type=10
+    name: BWF世界排名
+    schema:
+      name: BWF世界排名
+      baseSelector: body > div.container > div.main > div > div.pleft > div > div.content > table.ranktables > tbody > tr
+      fields:
+      - name: rank
+        selector: td:nth-child(1)
+        type: text
+      - name: country
+        selector: td:nth-child(2)
+        type: text
+      - name: player
+        selector: td:nth-child(3)
+        type: text
+      - name: cnt
+        selector: td:nth-child(5)
+        type: text
+      - name: points
+        selector: td:nth-child(6)
+        type: text
+
+  sinchew:
+    url:
+     news: https://www.sinchew.com.my/category/%E4%BD%93%E8%82%B2/%E7%BE%BD%E7%90%83
+    name: 星州网羽球——马来西亚
+    schema:
+      name: 星州网羽球——马来西亚
+      baseSelector: div.post-frame-mobile-right
+      fields:
+      - name: title
+        selector: h2 > a
+        type: text
+      - name: detail_link
+        selector: h2 > a
+        type: html
+      - name: publication_date
+        selector: div.meta > span.time
+        type: text
+  # bwfcn:
+  #   url:
+  #    news: https://bwfbadminton.com/zh-cn/news/
+  # cctv:
+  #   url:
+  #     moments: https://sports.cctv.com/badminton/
+  lianhezaobao:
+    url:
+      news: https://www.zaobao.com.sg/keywords/yu-mao-qiu
+    name: 联合早报——新加坡
+    schema:
+      name: 联合早报——新加坡
+      baseSelector: div.article-list.row.row-tighten > div
+      fields:
+      - name: title
+        selector: div > div > div.col.col-lg-12 > div > a > h2
+        type: text
+      - name: detail_link
+        selector: div.post-frame-mobile-right > h2 > a
+        type: html
+      - name: publication_date
+        selector: div > div > div.col.col-lg-12 > div > div
+        type: text
